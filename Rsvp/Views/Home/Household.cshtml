@@ -1,0 +1,15 @@
+﻿@model Rsvp.ViewModels.HouseholdViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("RSVP", "Home",  FormMethod.Post))
+{
+    <div>
+        @Html.EditorFor(model => model.Guests)
+    </div>
+    <div class="rsvpButtonDiv">
+        <input class="rsvpButton" type="submit" value="RSVP" />
+    </div>   
+}

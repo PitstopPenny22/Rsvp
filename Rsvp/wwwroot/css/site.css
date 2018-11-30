@@ -1,0 +1,118 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Poiret+One|Clicker+Script|Cinzel|Aref+Ruqaa');
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 2vh;
+    padding-bottom: 20px;
+    --gold: #edb71e;
+    --gold-text: #ddab1d;
+    --grey: #777;
+    --font-poiret-one: "Poiret One", cursive;
+    --font-clicker-script: "Clicker Script", cursive;
+    --font-cinzel: "Cinzel", serif;
+    --font-aref-ruqaa: "Aref Ruqaa", serif;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.invitationOuterBorder {
+    border: 2px solid var(--gold);
+    margin: auto;
+    width: 80vw;
+    padding: 10px;
+}
+.headerContent {
+    margin: auto;
+    text-align: center;
+}
+.logo {
+    margin: auto;
+    width: 8vw;
+}
+h1 {
+    color: var(--gold);
+    font-family: var(--font-aref-ruqaa);
+    letter-spacing: 1.1px;
+    word-spacing: 1.2px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 35pt;
+}
+h2, h6 {
+    color: var(--gold);
+    font-family: var(--font-clicker-script);
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+h6{
+    font-size: 25pt;
+}
+h2{
+    font-size: 35pt;
+}
+.closerToTheTop {
+    margin-top: -5px;
+}
+a, a:visited {
+    font-size: 18pt;
+    font-family: var(--font-poiret-one);
+    font-weight: bold;
+    color: var(--grey);
+    line-height: 7;
+    text-decoration: none;
+}
+a:hover {
+    color: var(--gold);
+    font-weight: bolder;
+    text-decoration: none;
+}
+label, p {
+    font-family: var(--font-poiret-one);
+    font-size: 16pt;
+    font-weight: normal;
+    margin-left: 5px;
+}
+#detailsTextDiv {
+    /*margin-top: 0.2vh;*/
+}
+
+.guestDiv {
+    margin-bottom: 3%;
+}
+.guestReplyDetails {
+    margin-left: 5%;
+}
+.rsvpButton, .rsvpButton:hover {
+    font-size: 18pt;
+    padding: 1% 7%;
+    letter-spacing: 1.5pt;
+    text-decoration: none;
+    font-family: var(--font-aref-ruqaa);
+    border: 2px solid var(--gold);
+}
+.rsvpButton {
+    background: white;
+    color: var(--gold-text);
+}
+.rsvpButton:hover {
+    background: var(--gold);
+    color: white;
+    font-weight: bold;
+}
+.rsvpButtonDiv{
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+@media screen and (max-width: 600px) {
+    .invitationOuterBorder {
+        width: 100vw;
+    }
+}

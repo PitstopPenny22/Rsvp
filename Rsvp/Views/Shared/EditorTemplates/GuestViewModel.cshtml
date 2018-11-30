@@ -1,0 +1,120 @@
+﻿@using Rsvp.Utils.Enums
+@using Rsvp.Utils.Extensions
+@model Rsvp.ViewModels.GuestViewModel
+<style>
+    .groupedSection {
+        margin: 10px 0 0 0;
+    }
+    .groupedSection p {
+        margin: 0;
+    }
+    .checkBoxLabel {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        margin-left: 0;
+    }
+
+        /* Hide the browser's default checkbox */
+    #checkBoxDefaultInput {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: white;
+        border: var(--gold) 1px solid;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .checkBoxLabel:hover input ~ .checkmark {
+        background-color: var(--gold-text);
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .checkBoxLabel input:checked ~ .checkmark {
+        background-color: var(--gold);
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .checkBoxLabel input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .checkBoxLabel .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+</style>
+
+<div class="guestDiv">
+    <h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
+    <div class="guestReplyDetails">
+        <div class="groupedSection">
+            @{
+                foreach (Enum rsvpOption in Enum.GetValues(typeof(RsvpStatus)))
+                {
+                    <div>
+                        @Html.RadioButtonFor(s => s.RsvpReply, rsvpOption)
+                        @Html.Label(rsvpOption.ToString(), rsvpOption.GetDescription())
+                    </div>
+                }
+            }
+        </div>
+  
+        <div class="groupedSection">
+            <p>I promise to not leave the dancefloor when you play:</p>
+            <input type="text" style="width: 100%;" placeholder="Song Request" value="@Html.ViewData.Model.SongRequest"/>
+        </div>
+        <div class="groupedSection">
+            <p>I'm a picky eater in the following senses:</p>
+            <input type="text" style="width: 100%;" placeholder="Dietary Requirements" value="@Html.ViewData.Model.DietaryRequirements"/>
+        </div>
+        <div class="groupedSection">
+            @{
+                foreach (Enum hotelRequirement in Enum.GetValues(typeof(HotelRequirementOptions)))
+                {
+                    <div>
+                        @Html.RadioButtonFor(s => s.HotelRequirement, hotelRequirement)
+                        @Html.Label(hotelRequirement.ToString(), hotelRequirement.GetDescription())
+                    </div>
+                }
+            }
+        </div>
+
+        <div>
+            <label class="checkBoxLabel">
+                <input type="checkbox" id="checkBoxDefaultInput" checked="@Html.ViewData.Model.RequiresTransport">
+                I would like to use the arranged transport service between the Hilton and the venue on Saturday.
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+</div>
