@@ -25,29 +25,31 @@ namespace Rsvp.Controllers
             var success = Guid.TryParse(idAsString, out var id);
             if (!success)
             {
-                 return NotFound(idAsString);    
+                return RedirectToAction("Index");
             }
 
-            var householdViewModel = _guestsRepository.GetHouseholdById(id);
+            var householdViewModel = _guestsRepository.GetFullHouseholdById(id);
             if (householdViewModel == null)
             {
-                 return NotFound(idAsString);
+                return RedirectToAction("Index");
             }
-            var guests = _guestsRepository.GetGuestsInHouseholdWithId(id);
-            householdViewModel.Guests = guests;
             return View(householdViewModel);
         }
 
-        //[HttpPost]
-        //public IActionResult RSVP(HouseholdViewModel householdViewModel)
-        //{
-        //   _guestsRepository.UpdateRsvpStatusForHousehold(householdViewModel);
-        //    return View(householdViewModel);
-        //}
         [HttpPost]
-        public IActionResult RSVP(GuestViewModel[] guests)
+        public IActionResult SendRsvpReply(HouseholdViewModel householdViewModel)
         {
-            return View();
+            try
+            {
+                _guestsRepository.UpdateRsvpStatusForHousehold(householdViewModel);
+                return View(householdViewModel);
+            }
+            catch (Exception ex)
+            {
+                // TODO DS log ex
+                return RedirectToAction("Index");
+            }
         }
+
     }
 }

@@ -75,6 +75,7 @@
 </style>
 
 <div class="guestDiv">
+    @Html.HiddenFor(model => model.HouseholdId) @Html.HiddenFor(model => model.Id)
     <h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
     <div class="guestReplyDetails">
         <div class="groupedSection">
@@ -88,14 +89,14 @@
                 }
             }
         </div>
-  
+
         <div class="groupedSection">
             <p>I promise to not leave the dancefloor when you play:</p>
-            <input type="text" style="width: 100%;" placeholder="Song Request" value="@Html.ViewData.Model.SongRequest"/>
+            @Html.TextBoxFor(model => model.SongRequest, new { placeholder = "Song Request", style = "width: 100%;" })
         </div>
         <div class="groupedSection">
             <p>I'm a picky eater in the following senses:</p>
-            <input type="text" style="width: 100%;" placeholder="Dietary Requirements" value="@Html.ViewData.Model.DietaryRequirements"/>
+            @Html.TextBoxFor(model => model.DietaryRequirements, new { placeholder = "Dietary Requirements", style="width: 100%;"})
         </div>
         <div class="groupedSection">
             @{
@@ -111,7 +112,7 @@
 
         <div>
             <label class="checkBoxLabel">
-                <input type="checkbox" id="checkBoxDefaultInput" checked="@Html.ViewData.Model.RequiresTransport">
+                @Html.CheckBoxFor(model => model.RequiresTransport, new { id = "checkBoxDefaultInput" })
                 I would like to use the arranged transport service between the Hilton and the venue on Saturday.
                 <span class="checkmark"></span>
             </label>
