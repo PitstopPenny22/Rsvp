@@ -99,8 +99,8 @@ label, p {
     a .logo {
         width: 30vw;
     }
-    h1 {
-        font-size: 25pt;
+    h1, h2 {
+        font-size: 20pt;
     }
     h6 {
         font-size: 15pt;
