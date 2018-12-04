@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace Rsvp.Utils
 {
-    public class EnumUtils
+    public static class EnumUtils
     {
+        public const int PendingReplyId = 2;
+
         public static Dictionary<RsvpStatus, int> EnumStatusToDbStatusIdMap = new Dictionary<RsvpStatus, int>
         {
             { RsvpStatus.Accepted, 4 },
