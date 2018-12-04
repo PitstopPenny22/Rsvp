@@ -20,15 +20,6 @@ namespace Rsvp.Models.DB
         public virtual DbSet<Household> Household { get; set; }
         public virtual DbSet<RsvpStatus> RsvpStatus { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                //TODO DS
-                //optionsBuilder.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:DefaultSchema", "guestsDb_user");
