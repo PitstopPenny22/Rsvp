@@ -1,7 +1,6 @@
 ﻿using Rsvp.Models.DB;
 using Rsvp.Utils.Enums;
 using Rsvp.ViewModels;
-using System;
 using System.Linq;
 using RsvpStatus = Rsvp.Utils.Enums.RsvpStatus;
 
@@ -39,6 +38,10 @@ namespace Rsvp.Utils.Extensions
             if (EnumUtils.EnumStatusToDbStatusIdMap.ContainsValue(guestViewModel.RsvpStatusId))
             {
                 guestViewModel.RsvpReply = EnumUtils.EnumStatusToDbStatusIdMap.First(status => status.Value == guestViewModel.RsvpStatusId).Key;
+            }
+            else
+            {
+                guestViewModel.RsvpReply = RsvpStatus.Accepted; // Default to accepted if there's no reply yet.
             }
             return guestViewModel;
         }

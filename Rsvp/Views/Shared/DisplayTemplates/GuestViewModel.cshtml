@@ -5,9 +5,11 @@
     .groupedSection {
         margin: 10px 0 0 0;
     }
+
     .groupedSection p {
         margin: 0;
     }
+
     .checkBoxLabel {
         display: block;
         position: relative;
@@ -16,15 +18,6 @@
         cursor: pointer;
         font-size: 22px;
         margin-left: 0;
-    }
-
-        /* Hide the browser's default checkbox */
-    #checkBoxDefaultInput {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
     }
 
     /* Create a custom checkbox */
@@ -36,11 +29,7 @@
         width: 25px;
         background-color: white;
         border: var(--gold) 1px solid;
-    }
-
-    /* On mouse-over, add a grey background color */
-    .checkBoxLabel:hover input ~ .checkmark {
-        background-color: var(--gold-text);
+        cursor: not-allowed;
     }
 
     /* When the checkbox is checked, add a gold background */
@@ -74,8 +63,7 @@
     }
 </style>
 
-<div class="guestDiv">
-    @Html.HiddenFor(model => model.HouseholdId) @Html.HiddenFor(model => model.Id)
+<div class="guestDiv" disabled>
     <h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
     <div class="guestReplyDetails">
         <div class="groupedSection">
@@ -83,7 +71,7 @@
                 foreach (Enum rsvpOption in Enum.GetValues(typeof(RsvpStatus)))
                 {
                     <div>
-                        @Html.RadioButtonFor(s => s.RsvpReply, rsvpOption)
+                        @Html.RadioButtonFor(s => s.RsvpReply, rsvpOption, new { disabled = "disabled" })
                         @Html.Label(rsvpOption.ToString(), rsvpOption.GetDescription())
                     </div>
                 }
@@ -92,18 +80,18 @@
 
         <div class="groupedSection">
             <p>I promise to not leave the dancefloor when you play:</p>
-            @Html.TextBoxFor(model => model.SongRequest, new { placeholder = "Song Request", style = "width: 100%;" })
+            @Html.DisplayFor(model => model.SongRequest, new { style = "width: 100%;", disabled = "disabled" })
         </div>
         <div class="groupedSection">
             <p>I'm a picky eater in the following senses:</p>
-            @Html.TextBoxFor(model => model.DietaryRequirements, new { placeholder = "Dietary Requirements", style="width: 100%;"})
+            @Html.DisplayFor(model => model.DietaryRequirements, new { style = "width: 100%;", disabled = "disabled" })
         </div>
         <div class="groupedSection">
             @{
                 foreach (Enum hotelRequirement in Enum.GetValues(typeof(HotelRequirementOptions)))
                 {
                     <div>
-                        @Html.RadioButtonFor(s => s.HotelRequirement, hotelRequirement)
+                        @Html.RadioButtonFor(s => s.HotelRequirement, hotelRequirement, new { disabled = "disabled" })
                         @Html.Label(hotelRequirement.ToString(), hotelRequirement.GetDescription())
                     </div>
                 }
@@ -112,9 +100,9 @@
 
         <div>
             <label class="checkBoxLabel">
-                @Html.CheckBoxFor(model => model.RequiresTransport, new { id = "checkBoxDefaultInput" })
+                @Html.HiddenFor(model => model.RequiresTransport)
                 I would like to use the arranged transport service between the Hilton and the venue on Saturday.
-                <span class="checkmark"></span>
+                <span class="checkmark" disabled></span>
             </label>
         </div>
     </div>

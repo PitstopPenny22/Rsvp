@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\Components\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Bouncer">
       <HintPath>..\..\Bouncer\Bouncer\bin\Debug\Bouncer.dll</HintPath>
       <Private>true</Private>

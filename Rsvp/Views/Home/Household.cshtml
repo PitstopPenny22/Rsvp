@@ -7,10 +7,10 @@
 @using (Html.BeginForm("SendRsvpReply", "Home", FormMethod.Post))
 {
     @Html.HiddenFor(model => model.Id)
-    <div>
-        @Html.EditorFor(model => model.Guests)
-    </div>
+<div>
+    @(Model.HasReplied ? @Html.DisplayFor(model => model.Guests) : @Html.EditorFor(model => model.Guests))
+</div>
     <div class="rsvpButtonDiv">
-        <input class="rsvpButton" type="submit" value="RSVP" />
+        <input class="rsvpButton" type="submit" value="RSVP" style="@(Model.HasReplied ? "display:none" : "display:block")"/>
     </div>   
 }
