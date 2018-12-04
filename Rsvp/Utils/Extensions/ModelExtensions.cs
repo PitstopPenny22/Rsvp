@@ -35,14 +35,9 @@ namespace Rsvp.Utils.Extensions
                 RequiresTransport = guestModel.RequiresTransport
             };
           
-            if (EnumUtils.EnumStatusToDbStatusIdMap.ContainsValue(guestViewModel.RsvpStatusId))
-            {
-                guestViewModel.RsvpReply = EnumUtils.EnumStatusToDbStatusIdMap.First(status => status.Value == guestViewModel.RsvpStatusId).Key;
-            }
-            else
-            {
-                guestViewModel.RsvpReply = RsvpStatus.Accepted; // Default to accepted if there's no reply yet.
-            }
+            guestViewModel.RsvpReply = EnumUtils.EnumStatusToDbStatusIdMap.ContainsValue(guestViewModel.RsvpStatusId)
+                ? EnumUtils.EnumStatusToDbStatusIdMap.First(status => status.Value == guestViewModel.RsvpStatusId).Key
+                : RsvpStatus.Accepted;
             return guestViewModel;
         }
     }
