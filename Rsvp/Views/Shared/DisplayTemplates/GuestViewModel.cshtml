@@ -14,7 +14,7 @@
         position: relative;
         padding-left: 35px;
         margin-bottom: 12px;
-        cursor: pointer;
+        cursor: not-allowed;
         font-size: 16pt;
         margin-left: 0;
     }
@@ -129,7 +129,7 @@
 
         <div>
             <label class="checkBoxLabel">
-                @Html.CheckBoxFor(model => model.RequiresTransport, new { id = "checkBoxDefaultInput", style="display: none;" })
+                @Html.CheckBoxFor(model => model.RequiresTransport, new { id = "checkBoxDefaultInput", style = "display: none;", @disabled = "disabled" })
                 I would like to use the arranged transport service between the Hilton and the venue on Saturday.
                 <span class="checkmark" disabled></span>
             </label>
