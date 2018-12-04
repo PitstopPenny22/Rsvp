@@ -39,12 +39,6 @@ namespace Rsvp
             services.AddScoped<IGuestsRepository, GuestsRepository>();
         }
 
-        private object GetDbPassword()
-        {
-            throw new NotImplementedException();
-        }
-
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -54,7 +48,6 @@ namespace Rsvp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
