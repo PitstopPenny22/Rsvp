@@ -79,9 +79,6 @@ label, p {
     font-weight: normal;
     margin-left: 5px;
 }
-#detailsTextDiv {
-    /*margin-top: 0.2vh;*/
-}
 
 .guestDiv {
     margin-bottom: 3%;
@@ -89,30 +86,26 @@ label, p {
 .guestReplyDetails {
     margin-left: 5%;
 }
-.rsvpButton, .rsvpButton:hover {
-    font-size: 18pt;
-    padding: 1% 7%;
-    letter-spacing: 1.5pt;
-    text-decoration: none;
-    font-family: var(--font-aref-ruqaa);
-    border: 2px solid var(--gold);
-}
-.rsvpButton {
-    background: white;
-    color: var(--gold-text);
-}
-.rsvpButton:hover {
-    background: var(--gold);
-    color: white;
-    font-weight: bold;
-}
-.rsvpButtonDiv{
-    text-align: center;
-    margin-bottom: 2vh;
-}
+
 
 @media screen and (max-width: 600px) {
+    body{
+        padding-bottom:0;
+        padding-top:0;
+    }
     .invitationOuterBorder {
         width: 100vw;
+    }
+    a .logo {
+        width: 30vw;
+    }
+    h1 {
+        font-size: 25pt;
+    }
+    h6 {
+        font-size: 15pt;
+    }
+    label, p {
+        font-size: 12pt;
     }
 }

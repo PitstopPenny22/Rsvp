@@ -5,7 +5,6 @@
     .groupedSection {
         margin: 10px 0 0 0;
     }
-
     .groupedSection p {
         margin: 0;
     }
@@ -16,14 +15,14 @@
         padding-left: 35px;
         margin-bottom: 12px;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 16pt;
         margin-left: 0;
     }
 
     /* Create a custom checkbox */
     .checkmark {
         position: absolute;
-        top: 0;
+        top: 3px;
         left: 0;
         height: 25px;
         width: 25px;
@@ -61,6 +60,36 @@
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
     }
+    .labelStyle {
+        font-size: 16pt;
+        width: 100%; 
+        font-family: var(--font-poiret-one); 
+        color: var(--gold-text);
+        font-weight: bolder;
+    }
+    @@media screen and (max-width: 600px) {
+        .checkBoxLabel {
+            font-size: 12pt;
+            padding-left: 21px;
+        }
+        .groupedSection label {
+            display: inline;
+        }
+        .checkmark {
+            height: 15px;
+            width: 15px;
+        }
+        .checkBoxLabel .checkmark:after {
+            left: 5px;
+            top: 2px;
+            width: 3px;
+            height: 8px;
+            border-width: 0 1px 1px 0;
+        }
+        .labelStyle {
+            font-size: 12pt;
+        }
+    }
 </style>
 
 <div class="guestDiv" disabled>
@@ -80,11 +109,11 @@
 
         <div class="groupedSection">
             <p>I promise to not leave the dancefloor when you play:</p>
-            @Html.DisplayFor(model => model.SongRequest, new { style = "width: 100%;", disabled = "disabled" })
+            <span class="labelStyle">@Html.DisplayFor(model => model.SongRequest)</span>
         </div>
         <div class="groupedSection">
             <p>I'm a picky eater in the following senses:</p>
-            @Html.DisplayFor(model => model.DietaryRequirements, new { style = "width: 100%;", disabled = "disabled" })
+            <span class="labelStyle">@Html.DisplayFor(model => model.DietaryRequirements)</span>
         </div>
         <div class="groupedSection">
             @{
@@ -100,7 +129,7 @@
 
         <div>
             <label class="checkBoxLabel">
-                @Html.HiddenFor(model => model.RequiresTransport)
+                @Html.CheckBoxFor(model => model.RequiresTransport, new { id = "checkBoxDefaultInput", style="display: none;" })
                 I would like to use the arranged transport service between the Hilton and the venue on Saturday.
                 <span class="checkmark" disabled></span>
             </label>

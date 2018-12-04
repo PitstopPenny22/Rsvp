@@ -14,11 +14,11 @@
         padding-left: 35px;
         margin-bottom: 12px;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 16pt;
         margin-left: 0;
     }
 
-        /* Hide the browser's default checkbox */
+    /* Hide the browser's default checkbox */
     #checkBoxDefaultInput {
         position: absolute;
         opacity: 0;
@@ -72,6 +72,39 @@
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
     }
+    .labelStyle {
+        font-size: 16pt;
+        width: 100%;
+        font-family: var(--font-poiret-one);
+        color: var(--gold-text);
+        font-weight: bolder;
+    }
+    @@media screen and (max-width: 600px) {
+        .checkBoxLabel {
+            font-size: 12pt;
+            padding-left: 21px;
+        }
+
+        .groupedSection label {
+            display: inline;
+        }
+
+        .checkmark {
+            height: 15px;
+            width: 15px;
+        }
+
+        .labelStyle {
+            font-size: 12pt;
+        }
+        .checkBoxLabel .checkmark:after {
+            left: 5px;
+            top: 2px;
+            width: 3px;
+            height: 8px;
+            border-width: 0 1px 1px 0;
+        }
+    }
 </style>
 
 <div class="guestDiv">
@@ -92,11 +125,11 @@
 
         <div class="groupedSection">
             <p>I promise to not leave the dancefloor when you play:</p>
-            @Html.TextBoxFor(model => model.SongRequest, new { placeholder = "Song Request", style = "width: 100%;" })
+            @Html.TextBoxFor(model => model.SongRequest, new { placeholder = "Song Request", style = "width: 100%;", @class="labelStyle" })
         </div>
         <div class="groupedSection">
             <p>I'm a picky eater in the following senses:</p>
-            @Html.TextBoxFor(model => model.DietaryRequirements, new { placeholder = "Dietary Requirements", style="width: 100%;"})
+            @Html.TextBoxFor(model => model.DietaryRequirements, new { placeholder = "Dietary Requirements", style="width: 100%;", @class = "labelStyle" })
         </div>
         <div class="groupedSection">
             @{
