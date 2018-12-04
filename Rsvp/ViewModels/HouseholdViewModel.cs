@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rsvp.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +21,7 @@ namespace Rsvp.ViewModels
                 }
                 else
                 {
-                    return Guests.All(g => g.RsvpStatusId != 2); // 2 is pending reply
+                    return Guests.All(g => g.RsvpStatusId != EnumUtils.PendingReplyId);
                 }
             }
         }
