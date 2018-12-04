@@ -22,18 +22,26 @@ namespace Rsvp.Controllers
         [HttpGet("{idAsString}")]
         public IActionResult Household(string idAsString)
         {
-            var success = Guid.TryParse(idAsString, out var id);
-            if (!success)
+            try
             {
-                return RedirectToAction("Index");
-            }
+                var success = Guid.TryParse(idAsString, out var id);
+                if (!success)
+                {
+                    return RedirectToAction("Index");
+                }
 
-            var householdViewModel = _guestsRepository.GetFullHouseholdById(id);
-            if (householdViewModel == null)
+                var householdViewModel = _guestsRepository.GetFullHouseholdById(id);
+                if (householdViewModel == null)
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(householdViewModel);
+            }
+            catch (Exception ex)
             {
+                // TODO DS log ex
                 return RedirectToAction("Index");
             }
-            return View(householdViewModel);
         }
 
         [HttpPost]
