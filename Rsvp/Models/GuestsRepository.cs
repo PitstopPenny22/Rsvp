@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Rsvp.Models.DB;
 using Rsvp.Models.Interfaces;
+using Rsvp.Utils;
 using Rsvp.Utils.Extensions;
 using Rsvp.ViewModels;
 using RsvpStatus = Rsvp.Utils.Enums.RsvpStatus;
@@ -56,6 +57,13 @@ namespace Rsvp.Models
                 {
                     return false;
                 }
+                // If the guest saved in the DB already has a reply status that is not 'PendingReply', then this guest has already been replied for.
+                // This should never be the case in theory (the button to submit should be hidden if guests have already replied), but in case it's some how hacked 
+                // into visibility, then we can catch the fact here anyway.
+                if (guest.RsvpStatusId != EnumUtils.PendingReplyId) 
+                {
+                    return false;
+                }
                 guest.RsvpStatusId = GetRsvpStatusId(guestViewModel.RsvpReply);
                 guest.SongRequest = guestViewModel.SongRequest;
                 guest.DietaryRequirements = guestViewModel.DietaryRequirements;
@@ -65,7 +73,6 @@ namespace Rsvp.Models
 
             return _guestsContext.SaveChanges() > 0;
         }
-
 
         //private void PopulateTableIfEmpty()
         //{
