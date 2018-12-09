@@ -21,6 +21,11 @@ body {
     padding-right: 15px;
 }
 
+/*h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 0.67em 0;
+}*/
 
 .invitationOuterBorder {
     border: 2px solid var(--gold);
@@ -37,25 +42,25 @@ body {
     width: 8vw;
 }
 h1 {
-    color: var(--gold);
-    font-family: var(--font-aref-ruqaa);
-    letter-spacing: 1.1px;
-    word-spacing: 1.2px;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 35pt;
+    color: var(--gold) !important;
+    font-family: var(--font-aref-ruqaa) !important;
+    letter-spacing: 1.1px !important;
+    word-spacing: 1.2px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    font-size: 35pt !important;
 }
 h2, h6 {
-    color: var(--gold);
-    font-family: var(--font-clicker-script);
-    margin-top: 5px;
-    margin-bottom: 0;
+    color: var(--gold) !important;
+    font-family: var(--font-clicker-script) !important;
+    margin-top: 5px !important;
+    margin-bottom: 0 !important;
 }
-h6{
-    font-size: 25pt;
+h6 {
+    font-size: 25pt !important;
 }
-h2{
-    font-size: 35pt;
+h2 {
+    font-size: 35pt !important;
 }
 .closerToTheTop {
     margin-top: -5px;
@@ -74,10 +79,10 @@ a:hover {
     text-decoration: none;
 }
 label, p {
-    font-family: var(--font-poiret-one);
-    font-size: 16pt;
-    font-weight: normal;
-    margin-left: 5px;
+    font-family: var(--font-poiret-one) !important;
+    font-size: 16pt !important;
+    font-weight: normal !important;
+    margin-left: 5px !important;
 }
 
 .guestDiv {
@@ -100,12 +105,12 @@ label, p {
         width: 30vw;
     }
     h1, h2 {
-        font-size: 20pt;
+        font-size: 20pt !important;
     }
     h6 {
-        font-size: 15pt;
+        font-size: 15pt !important;
     }
     label, p {
-        font-size: 12pt;
+        font-size: 12pt !important;
     }
 }
